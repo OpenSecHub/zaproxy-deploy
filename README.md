@@ -19,12 +19,15 @@ yum install -y java-11-openjdk-headless firefox
 [OWASP ZAP Download](https://www.zaproxy.org/download/)
 
  unpacking to dir `/opt` 
+ 
+ ```bash
+ tar xf ZAP_2.11.1_Linux.tar.gz -C /opt/
+ ```
 
-> The Linux package is actually just a tar.gz file, so ZAP will be ‘installed’ wherever you expand the archive.
-
-Update all changed add-ons from the ZAP Marketplace
+Update add-ons from the ZAP Marketplace
 
 ```bash
+cd /opt/ZAP_2.11.1
 ./zap.sh -addonupdate -daemon
 ```
 
@@ -71,7 +74,7 @@ ConditionKernelCommandLine=!recovery
 
 [Service]
 Type=simple
-ExecStart=/opt/ZAP_2.10.0/zap.sh -daemon -host 0.0.0.0 -port 9380 -configfile /etc/zap/zap.conf
+ExecStart=/opt/ZAP_2.11.1/zap.sh -daemon -host 0.0.0.0 -port 80 -configfile /etc/zap/zap.conf
 Restart=always
 TimeoutStopSec=10
 
